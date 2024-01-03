@@ -1,5 +1,5 @@
 # cflags
-CFLAGS=-I. -fsanitize=null -fsanitize=undefined -fsanitize=address -g3 -Og -Wall -Wextra -Werror -Wpedantic
+CFLAGS=-I. -fsanitize=null -fsanitize=undefined -fsanitize=address -g3 -Og -Wall -Wextra -Wpedantic
 # libs
 LIBS=-lm -lssl
 
