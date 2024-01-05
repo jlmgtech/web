@@ -30,13 +30,13 @@ void on_new_connection(uv_stream_t *server, int status)
 
     if (uv_accept(server, (uv_stream_t*) client) == 0) {
         onconnect((uv_stream_t*)client);
-        uv_read_start((uv_stream_t*) client, alloc_buffer, on_read);
+        uv_read_start((uv_stream_t*) client, new_clientbuff, on_read);
     } else {
         uv_close((uv_handle_t*) client, NULL);
     }
 }
 
-void alloc_buffer(__attribute__((unused)) uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
+void new_clientbuff(__attribute__((unused)) uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
     buf->base = (char*) malloc(suggested_size); // freed in on_read
     buf->len = suggested_size;

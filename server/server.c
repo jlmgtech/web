@@ -17,9 +17,6 @@ void serve(uv_loop_t *loop, const char *addr_str, const int port)
     uv_tcp_bind(&server, (const struct sockaddr*)&addr, 0);
 
     uv_listen((uv_stream_t*)&server, SOMAXCONN, on_new_connection);
-
-    printf("Listening on %s:%d\n", addr_str, port);
-    uv_run(loop, UV_RUN_DEFAULT);
 }
 
 void dowrite(uv_stream_t *client, char *data, size_t len)

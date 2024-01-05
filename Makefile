@@ -16,6 +16,6 @@ test:
 clean:
 	rm -f a.out
 
-a.out: *.c
+a.out: *.c **/*.c
 	gcc -o $@ $^ $(CFLAGS) $(LIBS)
 

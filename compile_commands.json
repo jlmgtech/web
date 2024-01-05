@@ -14,6 +14,86 @@
             "-Wpedantic",
             "-o",
             "a.out",
+            "server/server.c"
+        ],
+        "directory": "/home/james/programming/c/web",
+        "file": "server/server.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-I.",
+            "-fsanitize=null",
+            "-fsanitize=undefined",
+            "-fsanitize=address",
+            "-g3",
+            "-Og",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-o",
+            "a.out",
+            "client/client.c"
+        ],
+        "directory": "/home/james/programming/c/web",
+        "file": "client/client.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-I.",
+            "-fsanitize=null",
+            "-fsanitize=undefined",
+            "-fsanitize=address",
+            "-g3",
+            "-Og",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-o",
+            "a.out",
+            "client/uv_client.c"
+        ],
+        "directory": "/home/james/programming/c/web",
+        "file": "client/uv_client.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-I.",
+            "-fsanitize=null",
+            "-fsanitize=undefined",
+            "-fsanitize=address",
+            "-g3",
+            "-Og",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-o",
+            "a.out",
+            "server/uv_server.c"
+        ],
+        "directory": "/home/james/programming/c/web",
+        "file": "server/uv_server.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-I.",
+            "-fsanitize=null",
+            "-fsanitize=undefined",
+            "-fsanitize=address",
+            "-g3",
+            "-Og",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-o",
+            "a.out",
             "main.c"
         ],
         "directory": "/home/james/programming/c/web",
