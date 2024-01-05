@@ -1,0 +1,22 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-I.",
+            "-fsanitize=null",
+            "-fsanitize=undefined",
+            "-fsanitize=address",
+            "-g3",
+            "-Og",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-o",
+            "a.out",
+            "main.c"
+        ],
+        "directory": "/home/james/programming/c/web",
+        "file": "main.c"
+    }
+]

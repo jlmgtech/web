@@ -5,6 +5,7 @@
 #include <uv.h>
 #include <errno.h>
 #include <string.h>
+#define ignore __attribute__((unused))
 
 
 
@@ -60,10 +61,8 @@ void client_on_error(uv_handle_t *handle, int error)
 
 void client_on_data(uv_stream_t *server, char *buffer, ssize_t nread)
 {
-    printf("client_on_data!\n");
-    printf("nread: %lu\n", nread);
-    printf("buffer: %s\n", buffer);
-    //client_printf(server, "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n");
+    printf("received '%.*s'", (int)nread, buffer);
+    client_printf(server, "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n");
 }
 
 int main()
@@ -88,20 +87,21 @@ void on_server_connect(uv_connect_t* connection, int status)
 {
     if (status < 0) {
         fprintf(stderr, "Connection error %s\n", uv_strerror(status));
-        client_on_error(connection->handle, status);
+        client_on_error((uv_handle_t*)connection->handle, status);
         return;
     }
 
     client_on_connect(connection);
     uv_read_start(connection->handle, alloc_buffer, process_read);
 }
-void on_server_close(uv_handle_t* handle)
+
+void on_server_close(ignore uv_handle_t* handle)
 {
     // if there's any cleanup, like the buffer, do it here
-    //printf("on_server_close!\n");
+    printf("on_server_close!\n");
 }
 
-void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
+void alloc_buffer(ignore uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
     *buf = uv_buf_init((char*) malloc(suggested_size), suggested_size);
 }
@@ -112,7 +112,7 @@ void process_read(uv_stream_t *server, ssize_t nread, const uv_buf_t *buf)
         client_on_data(server, buf->base, nread);
     }
     else {
-        client_on_error(server, nread);
+        client_on_error((uv_handle_t*)server, nread);
     }
 
     // cargo culted from the docs:
